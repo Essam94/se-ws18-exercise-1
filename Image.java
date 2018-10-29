@@ -11,7 +11,7 @@ public class Image
     static int height = 100;
     public static byte data[];
     
-    static int Counter = 0;
+    static int Counter = 99;
     
     public static void main(String[] args) throws FileNotFoundException, IOException
     {
@@ -52,7 +52,6 @@ public class Image
         }
         write(File_Name);
     }
-
     public Image(int height, int width)
     {
         this.height = height;
@@ -72,11 +71,9 @@ public class Image
         Color Color2 = new Color(val);
         String RGB_Hex = "0x" + Integer.toHexString(val);
         
-        data[Counter] = (byte) Integer.parseInt(RGB_Hex.substring(2, 4), 16);
-        Counter++;
-        data[Counter] = (byte) Integer.parseInt(RGB_Hex.substring(4, 6), 16);
-        Counter++;
-	data[Counter] = (byte) Integer.parseInt(RGB_Hex.substring(6, 8), 16);
+        data[(x+width*y)*3] = (byte)Integer.parseInt(RGB_Hex.substring(2, 4), 16);
+        data[(x+width*y)*3+1] = (byte)Integer.parseInt(RGB_Hex.substring(4, 6), 16);
+        data[(x+width*y)*3+2] = (byte)Integer.parseInt(RGB_Hex.substring(6, 8), 16);
         
         Image_Hex += Integer.toString(Color2.getRed()) + " " + Integer.toString(Color2.getGreen()) + " " + Integer.toString(Color2.getBlue()) + " ";
     }
