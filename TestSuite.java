@@ -20,8 +20,11 @@ public class TestSuite {
   @Test public static void ImageTest3() {
     Image i = new Image(100,100);
     i.set(99,99,0x123456);
-    int len = i.data.length;
-    assert (false);
+    int length = i.data.length;
+    assert (i.data[length-4] == (byte)0x00);
+    assert (i.data[length-3] == (byte)0x12);
+    assert (i.data[length-2] == (byte)0x34);
+    assert (i.data[length-1] == (byte)0x56);
   }
 
   @Test public static void ImageTest4() throws java.io.FileNotFoundException,java.io.IOException {
